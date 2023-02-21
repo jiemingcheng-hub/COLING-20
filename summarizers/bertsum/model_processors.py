@@ -19,6 +19,7 @@ class ModelProcessor(object):
         custom_tokenizer: PreTrainedTokenizer = None,
         hidden: int = -2,
         reduce_option: str = 'mean',
+        greedyness: float = 0.45,
         language = English,
         random_state: int = 12345
     ):
@@ -41,7 +42,7 @@ class ModelProcessor(object):
         self.reduce_option = reduce_option
         self.nlp = language()
         self.random_state = random_state
-        self.nlp.add_pipe(self.nlp.create_pipe('sentencizer'))
+        self.nlp.add_pipe('sentencizer')
 
     def process_content_sentences(self, body: str, min_length:int = 40, max_length: int = 600) -> List[str]:
         """
@@ -53,7 +54,7 @@ class ModelProcessor(object):
         """
 
         doc = self.nlp(body)
-        return [c.string.strip() for c in doc.sents if max_length > len(c.string.strip()) > min_length]
+        return [c.text.strip() for c in doc.sents if max_length > len(c.text.strip()) > min_length]
 
     @abstractmethod
     def run_clusters(
