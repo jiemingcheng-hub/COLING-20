@@ -5,9 +5,9 @@ from preprocessing import PreProcessor
 from summarizers.bertsum import BertSummarizer
 
 document_preprocessor = PreProcessor()
-model = BertSummarizer(model='distilbert-base-uncased',reduce_option='max')
-json_articles_path = 'data/json-articles'
-summaries_path = 'data/summaries/max-pooling/distilbert-base-uncased'
+model = BertSummarizer(model='bert-base-multilingual-cased', reduce_option='max')
+json_articles_path = 'data-source'
+summaries_path = 'output/bert'
 articles = glob.glob(json_articles_path + '/**/*.json')
 print(f'Found {len(articles)} articles')
 for art in articles:

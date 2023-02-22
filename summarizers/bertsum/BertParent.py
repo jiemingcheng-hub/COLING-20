@@ -15,6 +15,7 @@ class BertParent(object):
     MODELS = {
         'bert-base-uncased': (BertModel, BertTokenizer),
         'bert-large-uncased': (BertModel, BertTokenizer),
+        'bert-base-multilingual-cased': (BertModel, BertTokenizer),
         'xlnet-base-cased': (XLNetModel, XLNetTokenizer),
         'xlm-mlm-enfr-1024': (XLMModel, XLMTokenizer),
         'distilbert-base-uncased': (DistilBertModel, DistilBertTokenizer),
