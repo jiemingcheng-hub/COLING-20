@@ -1,16 +1,20 @@
 import sys
-sys.path.insert(1, '.')
+# sys.path.insert(1, '.')
 
 import io
 import os
 import itertools
 import networkx as nx
-from ..preprocessing import PreProcessor
-from ..scoring import Scorer
+from preprocessing import PreProcessor
+from scoring import Scorer
 import  logging
 from networkx import Graph
-
+import sys
 from typing import List, Dict, Set, Tuple
+
+
+sys.path.append("...")
+
 class TextRank(object):
 
     def __init__(self, weight_function:str="lexical_overlap", enable_nlp:bool=False):
